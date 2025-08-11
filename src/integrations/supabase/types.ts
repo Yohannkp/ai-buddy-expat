@@ -10,9 +10,54 @@ export type Database = {
   public: {
     Tables: {
       posts: {
-        Row: { id: string; user_id: string; content: string; media_urls: string[] | null; reply_to_id: string | null; quoted_post_id: string | null; created_at: string }
-        Insert: { id?: string; user_id: string; content: string; media_urls?: string[] | null; reply_to_id?: string | null; quoted_post_id?: string | null; created_at?: string }
-        Update: { id?: string; user_id?: string; content?: string; media_urls?: string[] | null; reply_to_id?: string | null; quoted_post_id?: string | null; created_at?: string }
+        Row: { id: string; user_id: string; content: string; media_urls: string[] | null; reply_to_id: string | null; quoted_post_id: string | null; created_at: string; campus: string | null; city: string | null; categories: string[]; is_event: boolean | null; event_at: string | null; location_name: string | null; link_url: string | null; promos: string[]; fields: string[]; group_id: string | null }
+        Insert: { id?: string; user_id: string; content: string; media_urls?: string[] | null; reply_to_id?: string | null; quoted_post_id?: string | null; created_at?: string; campus?: string | null; city?: string | null; categories?: string[]; is_event?: boolean | null; event_at?: string | null; location_name?: string | null; link_url?: string | null; promos?: string[]; fields?: string[]; group_id?: string | null }
+        Update: { id?: string; user_id?: string; content?: string; media_urls?: string[] | null; reply_to_id?: string | null; quoted_post_id?: string | null; created_at?: string; campus?: string | null; city?: string | null; categories?: string[]; is_event?: boolean | null; event_at?: string | null; location_name?: string | null; link_url?: string | null; promos?: string[]; fields?: string[]; group_id?: string | null }
+      }
+      post_reactions: {
+        Row: { id: string; post_id: string; user_id: string; emoji: string; created_at: string }
+        Insert: { id?: string; post_id: string; user_id: string; emoji: string; created_at?: string }
+        Update: { id?: string; post_id?: string; user_id?: string; emoji?: string; created_at?: string }
+      }
+      post_reports: {
+        Row: { id: string; post_id: string; user_id: string; reason: string; created_at: string }
+        Insert: { id?: string; post_id: string; user_id: string; reason: string; created_at?: string }
+        Update: { id?: string; post_id?: string; user_id?: string; reason?: string; created_at?: string }
+      }
+      groups: {
+        Row: { id: string; name: string; description: string | null; created_by: string | null; created_at: string }
+        Insert: { id?: string; name: string; description?: string | null; created_by: string | null; created_at?: string }
+        Update: { id?: string; name?: string; description?: string | null; created_by?: string | null; created_at?: string }
+      }
+      group_members: {
+        Row: { group_id: string; user_id: string; role: string | null; joined_at: string }
+        Insert: { group_id: string; user_id: string; role?: string | null; joined_at?: string }
+        Update: { group_id?: string; user_id?: string; role?: string | null; joined_at?: string }
+      }
+      post_tags: {
+        Row: { post_id: string; tag: string }
+        Insert: { post_id: string; tag: string }
+        Update: { post_id?: string; tag?: string }
+      }
+      post_mentions: {
+        Row: { post_id: string; user_id: string }
+        Insert: { post_id: string; user_id: string }
+        Update: { post_id?: string; user_id?: string }
+      }
+      post_polls: {
+        Row: { id: string; post_id: string; question: string; closes_at: string | null }
+        Insert: { id?: string; post_id: string; question: string; closes_at?: string | null }
+        Update: { id?: string; post_id?: string; question?: string; closes_at?: string | null }
+      }
+      post_poll_options: {
+        Row: { id: string; poll_id: string; text: string }
+        Insert: { id?: string; poll_id: string; text: string }
+        Update: { id?: string; poll_id?: string; text?: string }
+      }
+      post_poll_votes: {
+        Row: { id: string; poll_id: string; option_id: string; user_id: string; created_at: string }
+        Insert: { id?: string; poll_id: string; option_id: string; user_id: string; created_at?: string }
+        Update: { id?: string; poll_id?: string; option_id?: string; user_id?: string; created_at?: string }
       }
       post_likes: {
         Row: { id: string; post_id: string; user_id: string; created_at: string }
