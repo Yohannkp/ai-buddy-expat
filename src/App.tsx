@@ -23,6 +23,7 @@ import Messages from "./pages/Messages";
 import Rules from "./pages/Rules";
 import PopularEvents from "./pages/PopularEvents";
 import Leaderboard from "./pages/Leaderboard";
+import XFeed from "./pages/XFeed";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
             <NavLink to="/rules" className={({ isActive }) => isActive ? "text-primary underline" : "hover:underline"}>Règles</NavLink>
             <NavLink to="/popular" className={({ isActive }) => isActive ? "text-primary underline" : "hover:underline"}>Populaires</NavLink>
             <NavLink to="/leaderboard" className={({ isActive }) => isActive ? "text-primary underline" : "hover:underline"}>Classement</NavLink>
+            <NavLink to="/x" className={({ isActive }) => isActive ? "text-primary underline" : "hover:underline"}>X</NavLink>
           </nav>
         </div>
         <Routes>
@@ -69,6 +71,7 @@ const App = () => (
           <Route path="/rules" element={<Rules />} />
           <Route path="/popular" element={<PopularEvents />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/x" element={<XFeed />} />
           <Route path="/login" element={<Login />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

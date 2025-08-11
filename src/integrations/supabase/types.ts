@@ -9,6 +9,31 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      posts: {
+        Row: { id: string; user_id: string; content: string; media_urls: string[] | null; reply_to_id: string | null; quoted_post_id: string | null; created_at: string }
+        Insert: { id?: string; user_id: string; content: string; media_urls?: string[] | null; reply_to_id?: string | null; quoted_post_id?: string | null; created_at?: string }
+        Update: { id?: string; user_id?: string; content?: string; media_urls?: string[] | null; reply_to_id?: string | null; quoted_post_id?: string | null; created_at?: string }
+      }
+      post_likes: {
+        Row: { id: string; post_id: string; user_id: string; created_at: string }
+        Insert: { id?: string; post_id: string; user_id: string; created_at?: string }
+        Update: { id?: string; post_id?: string; user_id?: string; created_at?: string }
+      }
+      post_reposts: {
+        Row: { id: string; post_id: string; user_id: string; created_at: string }
+        Insert: { id?: string; post_id: string; user_id: string; created_at?: string }
+        Update: { id?: string; post_id?: string; user_id?: string; created_at?: string }
+      }
+      post_bookmarks: {
+        Row: { id: string; post_id: string; user_id: string; created_at: string }
+        Insert: { id?: string; post_id: string; user_id: string; created_at?: string }
+        Update: { id?: string; post_id?: string; user_id?: string; created_at?: string }
+      }
+      follows: {
+        Row: { follower_id: string; followee_id: string; created_at: string }
+        Insert: { follower_id: string; followee_id: string; created_at?: string }
+        Update: { follower_id?: string; followee_id?: string; created_at?: string }
+      }
       events: {
         Row: {
           id: string
